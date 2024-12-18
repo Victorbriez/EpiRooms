@@ -1,10 +1,10 @@
 "use server";
 
-import { ActiviteProps } from "@/types/ActiviteInterface";
+import { ActivityProps } from "@/types/ActivityInterface";
 
 export async function getPlanningAction(
   date: string
-): Promise<ActiviteProps[]> {
+): Promise<ActivityProps[]> {
   const url = `https://lille-epirooms.epitest.eu/?date=${date}`;
 
   try {

@@ -1,13 +1,13 @@
-import { ActiviteProps } from "@/types/ActiviteInterface";
+import type { ActivityProps } from "@/types/ActivityInterface";
 
-export class Activite {
+export class Activity {
   readonly id: number;
   readonly end: Date;
   readonly start: Date;
   readonly title: string;
   readonly roomCode: string;
 
-  constructor(props: ActiviteProps) {
+  constructor(props: ActivityProps) {
     this.id = props.id;
     this.end = new Date(props.end);
     this.start = new Date(props.start);

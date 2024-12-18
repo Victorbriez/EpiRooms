@@ -1,32 +1,20 @@
-/**
- * Représente les droits associés à une activité.
- */
 export interface ActivityRights {
   planning_visible: number;
 }
 
-/**
- * Représente un utilisateur (propriétaire ou créateur) d'une activité.
- */
 export interface ActivityUser {
   login: string;
   title: string;
   picture: string;
 }
 
-/**
- * Représente une salle associée à une activité.
- */
 export interface ActivityRoom {
   code: string;
   type: string;
   seats: number;
 }
 
-/**
- * Interface principale représentant une activité telle qu'elle est reçue du serveur.
- */
-export interface ActiviteInterface {
+export interface ActivityInterface {
   id: number;
   id_calendar: number;
   calendar_type: string;
@@ -57,11 +45,7 @@ export interface ActiviteInterface {
   room: ActivityRoom;
 }
 
-/**
- * Type utilitaire pour extraire les propriétés nécessaires de ActiviteInterface
- * pour créer une instance de la classe Activite.
- */
-export type ActiviteProps = Pick<
-  ActiviteInterface,
+export type ActivityProps = Pick<
+  ActivityInterface,
   "id" | "end" | "start" | "title" | "acti_title" | "room" | "location"
 >;
