@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import type { ActivityProps } from "@/types/ActivityInterface";
 import { Activity } from "@/models/Activity";
 import { getPlanningAction } from "@/app/actions/getPlanningAction";
@@ -20,24 +20,24 @@ export function usePlanning() {
     []
   );
 
-  useEffect(() => {
-    const fetchActivities = async () => {
-      try {
-        const currentDate = new Date().toISOString().split("T")[0];
-        const data: ActivityProps[] = await getPlanningAction(currentDate);
-        const processedData = processActivities(data);
-        setEventList(processedData);
-      } catch (e) {
-        setError(
-          e instanceof Error ? e : new Error("An unknown error occurred")
-        );
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchActivities();
+  const fetchActivities = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const currentDate = new Date().toISOString().split("T")[0];
+      const data = await getPlanningAction(currentDate);
+      const processedData = processActivities(data);
+      setEventList(processedData);
+    } catch (e) {
+      setError(e instanceof Error ? e : new Error("An unknown error occurred"));
+    } finally {
+      setIsLoading(false);
+    }
   }, [processActivities]);
 
-  return { eventList, isLoading, error };
+  useEffect(() => {
+    fetchActivities();
+  }, [fetchActivities]);
+
+  return { eventList, isLoading, error, refresh: fetchActivities };
 }

@@ -6,6 +6,7 @@ export class Activity {
   readonly start: Date;
   readonly title: string;
   readonly roomCode: string;
+  readonly seats?: number;
 
   constructor(props: ActivityProps) {
     this.id = props.id;
@@ -13,6 +14,7 @@ export class Activity {
     this.start = new Date(props.start);
     this.title = props.acti_title ?? props.title ?? "N/A";
     this.roomCode = props.room?.code ?? props.location ?? "N/A";
+    this.seats = props.room?.seats;
   }
 
   getDurationInMinutes(): number {
