@@ -1,130 +1,162 @@
 [
   {
     "key": "FR/LIL/Hopital-Militaire/0-Tout-le-batiment",
-    "title": "0.Tout le bâtiment"
+    "title": "0.Tout le bâtiment",
+    "floor": "0"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/B-01-Bulma",
-    "title": "B.01 - Bulma"
+    "title": "B.01 - Bulma",
+    "floor": "0"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/B-02-Elliot-Alderson",
-    "title": "B.02 - Elliot Alderson"
+    "title": "B.02 - Elliot Alderson",
+    "floor": "0"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/B-14-La-Matrice",
-    "title": "B.14 - La Matrice"
+    "title": "B.14 - La Matrice",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/B-15-Krikkit",
-    "title": "B.15 - Krikkit"
+    "title": "B.15 - Krikkit",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/O-12-Arrakis",
-    "title": "O.12 - Arrakis"
+    "title": "O.12 - Arrakis",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-01-Stark",
-    "title": "S.01 - Stark"
+    "title": "S.01 - Stark",
+    "floor": "0"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-02-Pru-Ha",
-    "title": "S.02 - Pru'Ha"
+    "title": "S.02 - Pru'Ha",
+    "floor": "0"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-03-Mei-Hatsume",
-    "title": "S.03 - Mei Hatsume"
+    "title": "S.03 - Mei Hatsume",
+    "floor": "0"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-11-Microtech",
-    "title": "S.11 - Microtech"
+    "title": "S.11 - Microtech",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-12-Pandora",
-    "title": "S.12 - Pandora"
+    "title": "S.12 - Pandora",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-21abc-Denis-MacAlistair-Ritchie",
-    "title": "S.21abc - Denis MacAlistair Ritchie"
+    "title": "S.21abc - Denis MacAlistair Ritchie",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-21a-Denis",
-    "title": "S.21a - Denis"
+    "title": "S.21a - Denis",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-21b-MacAlistair",
-    "title": "S.21b - MacAlistair"
+    "title": "S.21b - MacAlistair",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-21c-Ritchie",
-    "title": "S.21c - Ritchie"
+    "title": "S.21c - Ritchie",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-22-Ada-Lovelace",
-    "title": "S.22 - Ada Lovelace"
+    "title": "S.22 - Ada Lovelace",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-23a-Hedy-Lamarr",
-    "title": "S.23a - Hedy Lamarr"
+    "title": "S.23a - Hedy Lamarr",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-23b-Al-Jazari",
-    "title": "S.23b - Al Jazari"
+    "title": "S.23b - Al Jazari",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-24-Roland-Moreno",
-    "title": "S.24 - Roland Moreno"
+    "title": "S.24 - Roland Moreno",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-25ab-Gwen-Barzey",
-    "title": "S.25ab - Gwen Barzey"
+    "title": "S.25ab - Gwen Barzey",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-25a-Gwen",
-    "title": "S.25a - Gwen"
+    "title": "S.25a - Gwen",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-25b-Barzey",
-    "title": "S.25b - Barzey"
+    "title": "S.25b - Barzey",
+    "floor": "2"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-33ab-Deep-Blue-Brain",
-    "title": "S.33ab - Deep Blue Brain"
+    "title": "S.33ab - Deep Blue Brain",
+    "floor": "3"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-33a-Deep-Blue",
-    "title": "S.33a - Deep Blue"
+    "title": "S.33a - Deep Blue",
+    "floor": "3"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-33b-Blue-Brain",
-    "title": "S.33b - Blue Brain"
+    "title": "S.33b - Blue Brain",
+    "floor": "3"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/0-Cour-interieure-Pierre-Robert",
-    "title": "0.Cour intérieure - Pierre Robert"
+    "title": "0.Cour intérieure - Pierre Robert",
+    "floor": "0"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/B-11-Gallifrey",
-    "title": "B.11 - Gallifrey"
+    "title": "B.11 - Gallifrey",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/B-12-Le-Continental",
-    "title": "B.12 - Le Continental"
+    "title": "B.12 - Le Continental",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/B-13-Kaer-Morhen",
-    "title": "B.13 - Kaer Morhen"
+    "title": "B.13 - Kaer Morhen",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/O-11-Kanojedo",
-    "title": "O.11 - Kanojedo"
+    "title": "O.11 - Kanojedo",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-13-Cantina-de-Chalmun",
-    "title": "S.13 - Cantina de Chalmun"
+    "title": "S.13 - Cantina de Chalmun",
+    "floor": "1"
   },
   {
     "key": "FR/LIL/Hopital-Militaire/S-14-Poudlard",
-    "title": "S.14 - Poudlard"
+    "title": "S.14 - Poudlard",
+    "floor": "1"
   }
 ]

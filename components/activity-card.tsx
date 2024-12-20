@@ -15,6 +15,7 @@ interface ActivityCardProps {
 
 const statusStyles = {
   upcoming: "border-2 border-blue-500",
+  "starting-soon": "border-2 border-indigo-500",
   ongoing: "border-2 border-green-500",
   "ending-soon": "border-2 border-yellow-500",
   ended: "border-2 border-gray-500 opacity-60",
