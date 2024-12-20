@@ -5,6 +5,7 @@ export class Activity {
   readonly end: Date;
   readonly start: Date;
   readonly title: string;
+  readonly codemodule?: string;
   readonly roomCode: string;
   readonly seats?: number;
 
@@ -13,6 +14,7 @@ export class Activity {
     this.end = new Date(props.end);
     this.start = new Date(props.start);
     this.title = props.acti_title ?? props.title ?? "N/A";
+    this.codemodule = props.codemodule;
     this.roomCode = props.room?.code ?? props.location ?? "N/A";
     this.seats = props.room?.seats;
   }

@@ -24,6 +24,7 @@ export interface ActivityInterface {
   type_room: string;
   title: string;
   acti_title: string;
+  codemodule: string;
   has_to_rate: boolean;
   event_registered: null;
   registered: number;
@@ -47,5 +48,12 @@ export interface ActivityInterface {
 
 export type ActivityProps = Pick<
   ActivityInterface,
-  "id" | "end" | "start" | "title" | "acti_title" | "room" | "location"
+  | "id"
+  | "end"
+  | "start"
+  | "title"
+  | "acti_title"
+  | "room"
+  | "location"
+  | "codemodule"
 >;
