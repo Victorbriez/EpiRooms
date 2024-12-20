@@ -1,75 +1,101 @@
 import { memo } from "react";
+import { Clock, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Activity } from "@/models/Activity";
+import { type Activity, type ActivityStatus } from "@/types/activity";
 import {
   getActivityProgress,
   getActivityStatus,
 } from "@/utils/activity-status";
-import { Clock, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ActivityCardProps {
   activity: Activity;
 }
 
-const statusStyles = {
-  upcoming: "border-2 border-blue-500",
-  "starting-soon": "border-2 border-indigo-500",
-  ongoing: "border-2 border-green-500",
-  "ending-soon": "border-2 border-yellow-500",
-  ended: "border-2 border-gray-500 opacity-60",
-} as const;
+const statusStyles: Record<ActivityStatus, string> = {
+  upcoming:
+    "border-l-4 border-l-primary hover:border-l-6 dark:border-opacity-50",
+  "starting-soon":
+    "border-l-4 border-l-warning hover:border-l-6 dark:border-opacity-50",
+  ongoing:
+    "border-l-4 border-l-success hover:border-l-6 dark:border-opacity-50",
+  "ending-soon":
+    "border-l-4 border-l-warning hover:border-l-6 dark:border-opacity-50",
+  ended:
+    "border-l-4 border-l-muted hover:border-l-6 opacity-60 dark:border-opacity-30",
+};
 
 export const ActivityCard = memo(function ActivityCard({
   activity,
 }: ActivityCardProps) {
   const status = getActivityStatus(activity.start, activity.end);
   const progress =
-    status === "ongoing"
+    status === "ongoing" || status === "ending-soon"
       ? getActivityProgress(activity.start, activity.end)
       : 0;
 
   return (
     <Card
-      className={cn("transition-all hover:shadow-md", statusStyles[status])}
+      className={cn(
+        "transition-all duration-200 hover:shadow-lg bg-card",
+        statusStyles[status]
+      )}
     >
       <CardContent className="p-4 space-y-3">
-        <div className="flex items-start justify-between">
-          <div>
-            <h3 className="font-medium line-clamp-2">{activity.title}</h3>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-              <Clock className="h-3 w-3" />
-              <span>
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0 flex-1">
+            <h3 className="font-medium line-clamp-2 text-foreground">
+              {activity.title}
+            </h3>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1.5">
+              <Clock className="h-3.5 w-3.5" />
+              <time dateTime={activity.start.toISOString()}>
                 {activity.start.toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
-                })}{" "}
-                -{" "}
+                })}
+              </time>
+              <span aria-hidden="true">-</span>
+              <time dateTime={activity.end.toISOString()}>
                 {activity.end.toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
-              </span>
+              </time>
             </div>
           </div>
-          {activity.seats && (
-            <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <Users className="h-3 w-3" />
-              <span>{activity.seats}</span>
-              <span>{activity.codemodule}</span>
+          {(activity.seats || activity.codemodule) && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground shrink-0">
+              {activity.seats && (
+                <div className="flex items-center gap-1">
+                  <Users className="h-3.5 w-3.5" />
+                  <span>{activity.seats}</span>
+                </div>
+              )}
+              {activity.codemodule && (
+                <span className="px-1.5 py-0.5 rounded-md bg-muted text-xs">
+                  {activity.codemodule}
+                </span>
+              )}
             </div>
           )}
         </div>
-        {status === "ongoing" && (
-          <Progress
-            value={progress}
-            className={cn(
-              "h-1",
-              progress > 85 ? "bg-yellow-500" : "bg-green-500"
-            )}
-          />
-        )}
+        {status === "ongoing" ||
+          (status === "ending-soon" && (
+            <div className="space-y-1">
+              <Progress
+                value={progress}
+                className={cn(
+                  "h-1.5",
+                  progress > 85 ? "bg-warning" : "bg-success"
+                )}
+              />
+              <p className="text-xs text-muted-foreground text-right">
+                {Math.round(progress)}% complete
+              </p>
+            </div>
+          ))}
       </CardContent>
     </Card>
   );
