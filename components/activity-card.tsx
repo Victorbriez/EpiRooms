@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Clock, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -8,6 +8,7 @@ import {
   getActivityStatus,
 } from "@/utils/activity-status";
 import { cn } from "@/lib/utils";
+import { ActivityDialog } from "./activity-dialog";
 
 interface ActivityCardProps {
   activity: Activity;
@@ -29,6 +30,7 @@ const statusStyles: Record<ActivityStatus, string> = {
 export const ActivityCard = memo(function ActivityCard({
   activity,
 }: ActivityCardProps) {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const status = getActivityStatus(activity.start, activity.end);
   const progress =
     status === "ongoing" || status === "ending-soon"
@@ -36,53 +38,54 @@ export const ActivityCard = memo(function ActivityCard({
       : 0;
 
   return (
-    <Card
-      className={cn(
-        "transition-all duration-200 hover:shadow-lg bg-card",
-        statusStyles[status]
-      )}
-    >
-      <CardContent className="p-4 space-y-3">
-        <div className="flex items-start justify-between gap-4">
-          <div className="min-w-0 flex-1">
-            <h3 className="font-medium line-clamp-2 text-foreground">
-              {activity.title}
-            </h3>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1.5">
-              <Clock className="h-3.5 w-3.5" />
-              <time dateTime={activity.start.toISOString()}>
-                {activity.start.toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </time>
-              <span aria-hidden="true">-</span>
-              <time dateTime={activity.end.toISOString()}>
-                {activity.end.toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </time>
+    <>
+      <Card
+        className={cn(
+          "transition-all duration-200 hover:shadow-lg bg-card cursor-pointer",
+          statusStyles[status]
+        )}
+        onClick={() => setDialogOpen(true)}
+      >
+        <CardContent className="p-4 space-y-3">
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0 flex-1">
+              <h3 className="font-medium line-clamp-2 text-foreground">
+                {activity.title}
+              </h3>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1.5">
+                <Clock className="h-3.5 w-3.5" />
+                <time dateTime={activity.start.toISOString()}>
+                  {activity.start.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </time>
+                <span aria-hidden="true">-</span>
+                <time dateTime={activity.end.toISOString()}>
+                  {activity.end.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </time>
+              </div>
             </div>
+            {(activity.seats || activity.codemodule) && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground shrink-0">
+                {activity.seats && (
+                  <div className="flex items-center gap-1">
+                    <Users className="h-3.5 w-3.5" />
+                    <span>{activity.seats}</span>
+                  </div>
+                )}
+                {activity.codemodule && (
+                  <span className="px-1.5 py-0.5 rounded-md bg-muted text-xs">
+                    {activity.codemodule}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
-          {(activity.seats || activity.codemodule) && (
-            <div className="flex items-center gap-2 text-sm text-muted-foreground shrink-0">
-              {activity.seats && (
-                <div className="flex items-center gap-1">
-                  <Users className="h-3.5 w-3.5" />
-                  <span>{activity.seats}</span>
-                </div>
-              )}
-              {activity.codemodule && (
-                <span className="px-1.5 py-0.5 rounded-md bg-muted text-xs">
-                  {activity.codemodule}
-                </span>
-              )}
-            </div>
-          )}
-        </div>
-        {status === "ongoing" ||
-          (status === "ending-soon" && (
+          {(status === "ongoing" || status === "ending-soon") && (
             <div className="space-y-1">
               <Progress
                 value={progress}
@@ -95,8 +98,14 @@ export const ActivityCard = memo(function ActivityCard({
                 {Math.round(progress)}% complete
               </p>
             </div>
-          ))}
-      </CardContent>
-    </Card>
+          )}
+        </CardContent>
+      </Card>
+      <ActivityDialog
+        activity={activity}
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+      />
+    </>
   );
 });

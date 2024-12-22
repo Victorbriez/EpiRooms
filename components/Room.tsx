@@ -41,9 +41,12 @@ export const Room = memo(function Room({ title, activities }: RoomProps) {
               Upcoming Sessions
             </h2>
             <div className="space-y-3">
-              {upcomingActivities.map((activity) => (
-                <ActivityCard key={activity.id} activity={activity} />
-              ))}
+              <ActivityCard activity={upcomingActivities[0]} />
+              {upcomingActivities.length > 1 && (
+                <p className="justify-start text-muted-foreground hover:text-foreground">
+                  +{upcomingActivities.length - 1} more activities
+                </p>
+              )}
             </div>
           </section>
         )}
