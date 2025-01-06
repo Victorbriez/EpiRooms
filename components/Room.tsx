@@ -30,7 +30,7 @@ export const Room = memo(function Room({ title, activities }: RoomProps) {
         {currentActivity && (
           <section className="space-y-3">
             <h2 className="text-sm font-medium text-muted-foreground">
-              Current Session
+              Activité en cours
             </h2>
             <ActivityCard activity={currentActivity} />
           </section>
@@ -38,13 +38,15 @@ export const Room = memo(function Room({ title, activities }: RoomProps) {
         {upcomingActivities.length > 0 && (
           <section className="space-y-3">
             <h2 className="text-sm font-medium text-muted-foreground">
-              Upcoming Sessions
+              Activité{upcomingActivities.length > 1 ? "s" : ""} à venir
             </h2>
             <div className="space-y-3">
               <ActivityCard activity={upcomingActivities[0]} />
               {upcomingActivities.length > 1 && (
                 <p className="justify-start text-muted-foreground hover:text-foreground">
-                  +{upcomingActivities.length - 1} more activities
+                  +{upcomingActivities.length - 1} activité
+                  {upcomingActivities.length > 2 ? "s" : ""} supplémentaire
+                  {upcomingActivities.length > 2 ? "s" : ""}
                 </p>
               )}
             </div>
@@ -52,7 +54,7 @@ export const Room = memo(function Room({ title, activities }: RoomProps) {
         )}
         {!currentActivity && upcomingActivities.length === 0 && (
           <div className="flex items-center justify-center py-8 text-muted-foreground">
-            No scheduled activities
+            Libre toute la journée
           </div>
         )}
       </CardContent>

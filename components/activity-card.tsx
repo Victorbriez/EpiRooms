@@ -55,17 +55,19 @@ export const ActivityCard = memo(function ActivityCard({
               <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1.5">
                 <Clock className="h-3.5 w-3.5" />
                 <time dateTime={activity.start.toISOString()}>
-                  {activity.start.toLocaleTimeString([], {
+                  {activity.start.toLocaleTimeString("fr-FR", {
                     hour: "2-digit",
                     minute: "2-digit",
                   })}
+                  h
                 </time>
-                <span aria-hidden="true">-</span>
+                <span className="mx-1">-</span>
                 <time dateTime={activity.end.toISOString()}>
-                  {activity.end.toLocaleTimeString([], {
+                  {activity.end.toLocaleTimeString("fr-FR", {
                     hour: "2-digit",
                     minute: "2-digit",
                   })}
+                  h
                 </time>
               </div>
             </div>
@@ -95,7 +97,7 @@ export const ActivityCard = memo(function ActivityCard({
                 )}
               />
               <p className="text-xs text-muted-foreground text-right">
-                {Math.round(progress)}% complete
+                {Math.round(progress)}% completé
               </p>
             </div>
           )}

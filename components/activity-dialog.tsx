@@ -1,3 +1,5 @@
+"use client";
+
 import { Clock, Users } from "lucide-react";
 import { type Activity } from "@/types/activity";
 import {
@@ -8,6 +10,9 @@ import {
 } from "@/components/ui/dialog";
 import { getActivityStatus } from "@/utils/activity-status";
 import { StatusBadge } from "@/components/status-badge";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 interface ActivityDialogProps {
   activity: Activity;
@@ -25,57 +30,67 @@ export function ActivityDialog({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <div className="flex items-start gap-4">
-            <DialogTitle className="text-xl">{activity.title}</DialogTitle>
+        <DialogHeader className="space-y-4">
+          <div className="flex justify-start">
             <StatusBadge status={status} />
           </div>
+          <DialogTitle className="text-xl font-semibold">
+            {activity.title}
+          </DialogTitle>
         </DialogHeader>
+        <Separator />
         <div className="space-y-6">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 text-sm">
-              <Clock className="h-4 w-4 text-muted-foreground" />
-              <div className="space-y-1">
-                <div>
-                  <time dateTime={activity.start.toISOString()}>
-                    {activity.start.toLocaleDateString([], {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </time>
-                </div>
-                <div className="text-muted-foreground">
-                  <time dateTime={activity.start.toISOString()}>
-                    {activity.start.toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </time>
-                  <span className="mx-2">-</span>
-                  <time dateTime={activity.end.toISOString()}>
-                    {activity.end.toLocaleTimeString([], {
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </time>
+          <Card className="border-none shadow-none">
+            <CardContent className="space-y-4 p-0">
+              <div className="flex items-start gap-3">
+                <Clock className="h-4 w-4 mt-1 text-muted-foreground shrink-0" />
+                <div className="space-y-1.5">
+                  <p className="font-medium">
+                    <time dateTime={activity.start.toISOString()}>
+                      {activity.start.toLocaleDateString("fr-FR", {
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    <time dateTime={activity.start.toISOString()}>
+                      {activity.start.toLocaleTimeString("fr-FR", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </time>
+                    h<span className="mx-2">-</span>
+                    <time dateTime={activity.end.toISOString()}>
+                      {activity.end.toLocaleTimeString("fr-FR", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </time>
+                    h
+                  </p>
                 </div>
               </div>
-            </div>
-            {activity.seats && (
-              <div className="flex items-center gap-2 text-sm">
-                <Users className="h-4 w-4 text-muted-foreground" />
-                <span>{activity.seats} seats</span>
-              </div>
-            )}
-          </div>
+
+              {activity.seats && (
+                <div className="flex items-center gap-3">
+                  <Users className="h-4 w-4 text-muted-foreground shrink-0" />
+                  <span className="text-sm">
+                    {activity.seats} places disponibles
+                  </span>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
           {activity.codemodule && (
-            <div>
-              <h3 className="text-sm font-medium mb-1.5">Module</h3>
-              <div className="inline-flex items-center rounded-md border px-2.5 py-0.5 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+            <div className="space-y-2.5">
+              <h3 className="text-sm font-medium">Module</h3>
+              <Badge variant="outline" className="text-sm">
                 {activity.codemodule}
-              </div>
+              </Badge>
             </div>
           )}
         </div>

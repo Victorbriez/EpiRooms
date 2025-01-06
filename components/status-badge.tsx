@@ -5,11 +5,11 @@ const statusConfig: Record<
   ActivityStatus,
   { label: string; variant: "default" | "warning" | "success" }
 > = {
-  upcoming: { label: "Upcoming", variant: "default" },
-  "starting-soon": { label: "Starting Soon", variant: "warning" },
-  ongoing: { label: "In Use", variant: "success" },
-  "ending-soon": { label: "Ending Soon", variant: "warning" },
-  ended: { label: "Ended", variant: "default" },
+  upcoming: { label: "A venir", variant: "default" },
+  "starting-soon": { label: "Commence bientôt", variant: "warning" },
+  ongoing: { label: "En cours", variant: "success" },
+  "ending-soon": { label: "Fini bientôt", variant: "warning" },
+  ended: { label: "Fini", variant: "default" },
 };
 
 interface StatusBadgeProps {
