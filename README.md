@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EpiRooms 🏫
 
-## Getting Started
+EpiRooms est une application web moderne qui permet de visualiser en temps réel l'occupation des salles de l'école. Elle affiche les sessions en cours et à venir pour chaque salle, avec des mises à jour automatiques des statuts et des progressions.
 
-First, run the development server:
+## ✨ Fonctionnalités
 
+- 🔄 Actualisation en temps réel des statuts des salles
+- 📊 Barre de progression pour les sessions en cours
+- 🌓 Mode sombre/clair
+- 📱 Interface responsive
+- 🔄 Rechargement automatique lors du changement de jour
+- 🏷️ Badges de statut dynamiques (En cours, Bientôt terminé)
+- 👥 Affichage du nombre de places par salle
+
+## 🛠️ Technologies Utilisées
+
+- [Next.js 14](https://nextjs.org/) - Framework React avec App Router
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitaire
+- [shadcn/ui](https://ui.shadcn.com/) - Composants UI réutilisables
+- [TypeScript](https://www.typescriptlang.org/) - Typage statique
+- [Lucide Icons](https://lucide.dev/) - Icônes modernes
+
+## 🚀 Installation
+
+1. Clonez le dépôt :
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Victorbriez/EpiRooms.git
+cd epirooms
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Installez les dépendances :
+```bash
+pnpm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Lancez le serveur de développement :
+```bash
+pnpm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
-## Learn More
+## 🏗️ Structure du Projet
 
-To learn more about Next.js, take a look at the following resources:
+```
+epirooms/
+├── app/
+│   ├── actions/
+│   │   └── getPlanningAction.ts
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── activity-card.tsx
+│   ├── Room.tsx
+│   └── ui/
+├── hooks/
+│   └── usePlanning.ts
+├── models/
+│   └── Activity.ts
+├── types/
+│   ├── ActivityInterface.ts
+│   └── LocationInterface.ts
+└── utils/
+    └── activity-status.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔄 Mises à jour automatiques
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+L'application met à jour automatiquement :
+- Le statut et la progression des sessions toutes les secondes
+- La liste des activités toutes les minutes
+- Les données de l'API lors du changement de jour
 
-## Deploy on Vercel
+## 🤝 Contribution
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Les contributions sont les bienvenues ! N'hésitez pas à :
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push sur la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
